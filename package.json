@@ -10,7 +10,6 @@
   ],
   "dependencies": {
     "concat-stream": "^1.5.2",
-    "lodash": "^4.16.6",
     "promise": "^7.1.1"
   }
 }

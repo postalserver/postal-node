@@ -1,5 +1,4 @@
 var Message = require('./Message');
-var _size = require('lodash/size');
 
 function SendResult(client, result) {
   this.client = client;
@@ -21,7 +20,7 @@ SendResult.prototype.recipients = function recipients() {
 };
 
 SendResult.prototype.size = function size() {
-  return _size(this.recipients());
+  return this.recipients.length;
 };
 
 module.exports = SendResult;
