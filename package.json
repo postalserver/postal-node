@@ -1,7 +1,7 @@
 {
-  "name": "postal",
-  "version": "1.0.1",
-  "description": "Postal for Node library.",
+  "name": "@atech/postal",
+  "version": "1.0.0",
+  "description": "Node library for open source mail delivery platform, Postal",
   "author": "aTech Media <hello@atech.media>",
   "license": "MIT",
   "keywords": [
