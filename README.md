@@ -1,25 +1,28 @@
 # Postal for Node
 
-This library helps you send e-mails through [Postal](https://github.com/atech/postal) in Node and above.
+This library helps you send e-mails through the open source mail delivery
+platform, [Postal](https://github.com/atech/postal) in Node.
 
 ## Installation
 
 Install the library using [NPM](https://www.npmjs.com/):
 
 ```
-$ npm install postal --save
+$ npm install @atech/postal --save
 ```
 
 ## Usage
 
-Sending an email is very simple. Just follow the example below. Before you can begin, you'll
-need to login to our web interface and generate a new API credential.
+Sending an email is very simple. Just follow the example below. Before you can
+begin, you'll need to login to your installation's web interface and generate
+new API credentials.
 
 ```javascript
 // Include the Postal library
-var Postal = require('postal');
+var Postal = require('@atech/postal');
 
-// Create a new Postal client using the server key you generate in our web interface
+// Create a new Postal client using a server key generated using your
+// installation's web interface
 var client = new Postal.Client('https://postal.yourdomain.com', 'your-api-key');
 
 // Create a new message
@@ -31,11 +34,11 @@ message.to('mary@example.com');
 message.cc('mike@example.com');
 message.bcc('secret@awesomeapp.com');
 
-// Specify who the message should be from. This must be from a verified domain
-// on your mail server.
+// Specify who the message should be from - this must be from a verified domain
+// on your mail server
 message.from('test@test.postal.io');
 
-// Set the subejct
+// Set the subject
 message.subject('Hi there!');
 
 // Set the content for the e-mail
@@ -49,17 +52,18 @@ message.header('X-PHP-Test', 'value');
 message.attach('textmessage.txt', 'text/plain', 'Hello world!');
 
 // Send the message and get the result
-message.send().then(function (result) {
-  var recipients = result.recipients();
-  // Loop through each of the recipients to get the message ID
-  for (var email in recipients) {
-    var message = recipients[email];
-    console.log(message.id());    // Logs the message ID
-    console.log(message.token()); // Logs the message's token
-  }
-}).catch(function (error) {
-  // Do something with the error
-  console.log(error.code);
-  console.log(error.message);
-});
+message.send()
+  .then(function (result) {
+    var recipients = result.recipients();
+    // Loop through each of the recipients to get the message ID
+    for (var email in recipients) {
+      var message = recipients[email];
+      console.log(message.id());    // Logs the message ID
+      console.log(message.token()); // Logs the message's token
+    }
+  }).catch(function (error) {
+    // Do something with the error
+    console.log(error.code);
+    console.log(error.message);
+  });
 ```
