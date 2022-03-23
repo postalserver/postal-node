@@ -23,7 +23,10 @@ var Postal = require('@atech/postal');
 
 // Create a new Postal client using a server key generated using your
 // installation's web interface
-var client = new Postal.Client('https://postal.yourdomain.com', 'your-api-key');
+// Note: It is important that you don't specify the protocol "https://",
+// as doing that on some systems throws the error "getaddrinfo ENOTFOUND"
+// Internally, Client uses the https library to connect to the domain
+var client = new Postal.Client('postal.yourdomain.com', 'your-api-key');
 
 // Create a new message
 var message = new Postal.SendMessage(client);
