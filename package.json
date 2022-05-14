@@ -1,15 +1,28 @@
 {
-  "name": "@atech/postal",
-  "version": "1.0.0",
-  "description": "Node library for open source mail delivery platform, Postal",
-  "author": "aTech Media <hello@atech.media>",
-  "license": "MIT",
-  "keywords": [
-    "postal",
-    "mail"
-  ],
-  "dependencies": {
-    "concat-stream": "^1.5.2",
-    "promise": "^7.1.1"
-  }
+    "name": "@atech/postal",
+    "version": "2.0.0",
+    "description": "Node library for open source mail delivery platform, Postal",
+    "author": "aTech Media <hello@atech.media>",
+    "license": "MIT",
+    "keywords": [
+        "postal",
+        "mail"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "axios": "^0.27.2",
+        "zod": "^3.16.0"
+    },
+    "devDependencies": {
+        "typescript": "^4.6.4"
+    }
 }
