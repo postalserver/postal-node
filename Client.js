@@ -25,7 +25,7 @@ Client.prototype.makeRequest = function makeRequest(controller, action, paramete
         try {
           json = JSON.parse(content);
         } catch (error) {
-          reject(error);
+          return reject(error);
         }
         
         if (json.status === 'success') {
