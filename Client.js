@@ -21,7 +21,13 @@ Client.prototype.makeRequest = function makeRequest(controller, action, paramete
       path: '/api/v1/' + controller + '/' + action
     }, function (response) {
       response.pipe(concatStream(function (content) {
-        var json = JSON.parse(content);
+        var json
+        try {
+          json = JSON.parse(content);
+        } catch (error) {
+          return reject(error);
+        }
+        
         if (json.status === 'success') {
           resolve(json.data);
         } else {
